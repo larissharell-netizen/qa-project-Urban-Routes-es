@@ -37,7 +37,8 @@ urban_routes/
 | `helpers.py` | Función `retrieve_phone_code(driver)`, que lee los registros de rendimiento del navegador y devuelve el código SMS como texto. Es código de apoyo proporcionado y no se modifica. |
 | `page.py` | `UrbanRoutesPage`, con todos los localizadores y las acciones sobre la página. |
 | `test_main.py` | `TestUrbanRoutes`, con `setup_method()`, `teardown_method()` y las nueve pruebas. |
-
+| `requirements.txt` | Dependencias utulizadas en el proyecto. |
+| `README.md` | Resumen del proyecto. |
 ## Tecnologías y técnicas utilizadas
 
 **Tecnologías**
