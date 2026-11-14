@@ -13,27 +13,27 @@ class TestUrbanRoutes:
        options = Options()
        options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
        self.driver = webdriver.Chrome(options=options)
-       self.driver.get(data.urban_routes_url)
+       self.driver.get(data.URBAN_ROUTES_URL)
        self.routes_page = UrbanRoutesPage(self.driver)
 
    def teardown_method(self):
        self.driver.quit()
 
    def route_and_comfort(self):
-       self.routes_page.set_route(data.address_from, data.address_to)
+       self.routes_page.set_route(data.ADDRESS_FROM, data.ADDRESS_TO)
        self.routes_page.click_call_taxi()
        self.routes_page.select_comfort()
 
    def ready_to_order(self):
        self.route_and_comfort()
-       self.routes_page.fill_phone(data.phone_number)
-       self.routes_page.add_card(data.card_number, data.card_code)
-       self.routes_page.set_message(data.message_for_driver)
+       self.routes_page.fill_phone(data.PHONE_NUMBER)
+       self.routes_page.add_card(data.CARD_NUMBER, data.CARD_CODE)
+       self.routes_page.set_message(data.MESSAGE_FOR_DRIVER)
 
 
    def test_1_set_route(self):
-       address_from = data.address_from
-       address_to = data.address_to
+       address_from = data.ADDRESS_FROM
+       address_to = data.ADDRESS_TO
        self.routes_page.set_route(address_from, address_to)
        assert self.routes_page.get_from() == address_from
        assert self.routes_page.get_to() == address_to
@@ -44,18 +44,18 @@ class TestUrbanRoutes:
 
    def test_3_fill_phone_number(self):
        self.route_and_comfort()
-       self.routes_page.fill_phone(data.phone_number)
-       assert self.routes_page.get_phone() == data.phone_number
+       self.routes_page.fill_phone(data.PHONE_NUMBER)
+       assert self.routes_page.get_phone() == data.PHONE_NUMBER
 
    def test_4_add_credit_card(self):
        self.route_and_comfort()
-       self.routes_page.add_card(data.card_number, data.card_code)
+       self.routes_page.add_card(data.CARD_NUMBER, data.CARD_CODE)
        assert self.routes_page.get_payment_method() == 'Tarjeta'
 
    def test_5_write_message_for_driver(self):
        self.route_and_comfort()
-       self.routes_page.set_message(data.message_for_driver)
-       assert self.routes_page.get_message() == data.message_for_driver
+       self.routes_page.set_message(data.MESSAGE_FOR_DRIVER)
+       assert self.routes_page.get_message() == data.MESSAGE_FOR_DRIVER
 
    def test_6_order_blanket_and_tissues(self):
        self.route_and_comfort()
@@ -77,4 +77,6 @@ class TestUrbanRoutes:
        self.ready_to_order()
        self.routes_page.click_order()
        assert self.routes_page.is_search_modal_visible()
-       assert self.routes_page.wait_for_driver_info(timeout=60).is_displayed()
+       self.routes_page.wait_for_driver_info(timeout=60)
+       assert self.routes_page.get_driver_rating() != ''
+

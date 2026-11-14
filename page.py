@@ -48,7 +48,7 @@ class UrbanRoutesPage:
    order_button = (By.CSS_SELECTOR, 'button.smart-button')
    order_modal = (By.CSS_SELECTOR, '.order.shown')
    order_title = (By.CSS_SELECTOR, '.order-header-title')
-   driver_info = (By.CSS_SELECTOR, '.order-btn-group')
+   driver_rating = (By.CLASS_NAME, 'order-btn-rating')
 
    def __init__(self, driver):
        self.driver = driver
@@ -153,4 +153,7 @@ class UrbanRoutesPage:
        return self.visible(self.order_title).text
 
    def wait_for_driver_info(self, timeout=60):
-       return self.visible(self.driver_info, timeout)
+       return self.visible(self.driver_rating, timeout)
+
+   def get_driver_rating(self):
+       return self.visible(self.driver_rating).text

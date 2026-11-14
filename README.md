@@ -27,6 +27,7 @@ urban_routes/
 ├── helpers.py     # retrieve_phone_code(): obtiene el código de confirmación del teléfono
 ├── page.py        # Clase UrbanRoutesPage (Page Object): localizadores y métodos
 ├── test_main.py   # Clase TestUrbanRoutes: las 9 pruebas
+├── requirements.txt # Dependencias del proyecto
 └── README.md
 ```
 
@@ -40,7 +41,7 @@ urban_routes/
 ## Tecnologías y técnicas utilizadas
 
 **Tecnologías**
-- **Python 3**
+- **Python**
 - **Selenium WebDriver** con Google Chrome, para interactuar con la interfaz
 - **Pytest**, como framework de ejecución de pruebas y aserciones
 - **PyCharm**, como entorno de desarrollo
@@ -57,7 +58,7 @@ urban_routes/
 
 ## Requisitos previos
 
-- Python 3 instalado
+- Python instalado
 - Google Chrome instalado
 - PyCharm
 
@@ -68,10 +69,12 @@ urban_routes/
    git clone <URL_DEL_REPOSITORIO>
    (este fue el usado por mi: git clone git@github.com:larissharell-netizen/qa-project-Urban-Routes-es.git)
    ```
-2. Abrir el proyecto en **PyCharm**: `Archivo → Abrir` y selecciona la carpeta `qa-project-Urban-Routes-es`.
-3. Instalar las dependencias del proyecto (`pytest`, `requests`).
-4. Verificar que el archivo `data.py` tenga la URL correcta del entorno de pruebas.
-5. Ejecutar toda la suite de pruebas consignada en el archivo de pruebas test_main.py.
+2. Abrir el proyecto en **PyCharm**: `Archivo → Abrir` y selecciona la carpeta `qa-project-Urban-Routes-es`. 
+3. Instalar las dependencias del proyecto:
+   pip install -r requirements.txt
+4. Verificar que el archivo `data.py` tenga la URL correcta del entorno de pruebas. 
+5. Ejecutar las pruebas:
+   pytest test_main.py -v
 6. Cada ejecución abre y cierra su propio navegador. 
 
 
